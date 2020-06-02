@@ -1,0 +1,19 @@
+.Weather{
+}
+.Weather p{
+    display: inline-block;
+    vertical-align: middle;
+ }
+.Weather img{
+    display: inline-block;
+    vertical-align: middle;
+ }
+.ond_max{
+    font-size: 50px;
+    color: rgb(255, 0, 0);
+}
+.ond_min{
+    font-size: 50px;
+    color: rgb(0, 61, 228);
+    
+}

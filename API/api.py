@@ -1,18 +1,14 @@
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 from flask_cors import CORS
-
+# webCamera取得
 import webCamera as wc
+# 天気取得
+import YahooWeather as YW
+
 app = Flask(__name__)
 CORS(app)
 
 webcamera = wc.wedCamera()
-
-
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
-#     # "/" を呼び出したときには、indexが表示される。
 
 
 def gen(webcamera):
@@ -30,9 +26,14 @@ def gen(webcamera):
 
 @app.route('/')
 def video_feed():
-    pass
     return Response(gen(webcamera),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/Weather')
+def Weather():
+    # return jsonify({"language": "python"})
+    return jsonify(YW.get_Weather())
 
 
 if __name__ == '__main__':

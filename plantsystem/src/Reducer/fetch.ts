@@ -1,10 +1,16 @@
-import { Weather } from '../Action'
+import { webCamera, Weather } from '../Action'
+import { join } from 'path'
 const reData = () => {
-    function get_weather(dispatch: any) {
-        fetch("http://localhost:5000").then(data => dispatch(Weather(data.url)))
+    function get_webCamera(dispatch: any) {
+        fetch("http://localhost:5000").then(data => dispatch(webCamera(data.url)))
+    }
+    function get_Weather(dispatch: any) {
+        fetch("http://localhost:5000/Weather").then(data => data.json()).then(data=> dispatch(Weather(data))
+        )
     }
     return {
-        get_weather,
+        get_webCamera,
+        get_Weather
     }
 }
 

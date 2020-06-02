@@ -4,3 +4,9 @@ export const Weather = (WeatherData: any) => {
         Data: WeatherData
     };
 };
+export const webCamera = (webCameraURL: String) => {
+    return {
+        type: 'webCamera',
+        Data: webCameraURL
+    };
+};

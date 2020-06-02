@@ -16,7 +16,7 @@ class webCamera_view extends React.Component<any, any> {
         console.log("log",this.props);
         
         return (
-            <img src={this.props.weather} />
+            <img src={this.props.webCamera} />
         )
     }
 }
@@ -26,6 +26,6 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const dispatch = useDispatch();
-    return { get_webCamera: () => { getData().get_weather(dispatch); } };
+    return { get_webCamera: () => { getData().get_webCamera(dispatch); } };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(webCamera_view)
