@@ -1,24 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import { useSelector, useDispatch } from 'react-redux'
+//処理に関するimportをしてください(Action)
 function App() {
+  const Data = useSelector((state:any) => state.weather);
+  const dispatch = useDispatch();
+  console.log(Data);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{Data}</h1>
     </div>
   );
 }

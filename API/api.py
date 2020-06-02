@@ -1,9 +1,9 @@
 from flask import Flask, Response
 
-import test
+import webCamera as wc
 app = Flask(__name__)
 
-webcamera = test.wedCamera()
+webcamera = wc.wedCamera()
 
 
 # @app.route('/')
