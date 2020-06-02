@@ -1,7 +1,9 @@
 from flask import Flask, Response
+from flask_cors import CORS
 
 import webCamera as wc
 app = Flask(__name__)
+CORS(app)
 
 webcamera = wc.wedCamera()
 

@@ -1,5 +1,6 @@
-export const Weather = () => {
-   return {
-       type: 'Weather',
-   };
+export const Weather = (WeatherData: any) => {
+    return {
+        type: 'Weather',
+        Data: WeatherData
+    };
 };
