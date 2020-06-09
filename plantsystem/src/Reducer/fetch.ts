@@ -1,11 +1,13 @@
 import { webCamera, Weather } from '../Action'
-import { join } from 'path'
 const reData = () => {
     function get_webCamera(dispatch: any) {
-        fetch("http://localhost:5000").then(data => dispatch(webCamera(data.url)))
+        fetch("http://192.168.11.6:5000")
+            .then(data => dispatch(webCamera(data.url)))
     }
     function get_Weather(dispatch: any) {
-        fetch("http://localhost:5000/Weather").then(data => data.json()).then(data=> dispatch(Weather(data))
+        fetch("http://192.168.11.6:5000/Weather")
+            .then(data => data.json())
+            .then(data => dispatch(Weather(data))
         )
     }
     return {

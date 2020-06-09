@@ -16,7 +16,7 @@ class webCamera_view extends React.Component<any, any> {
         console.log("log",this.props);
         
         return (
-            <img src={this.props.webCamera} />
+            <img width="400px" height="300px" src={this.props.webCamera} />
         )
     }
 }

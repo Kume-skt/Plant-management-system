@@ -7,7 +7,6 @@ import YahooWeather as YW
 
 app = Flask(__name__)
 CORS(app)
-
 webcamera = wc.wedCamera()
 
 

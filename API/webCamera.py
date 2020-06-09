@@ -6,11 +6,7 @@ class wedCamera():
         self.cap = cv2.VideoCapture(0)  # 0はカメラのデバイス番号
      
     def __del__(self):
-        self.video.release()
-
-    def set_frame():
-        global fream
-        fream = "1"
+        self.cap.release()
 
     def capture_camera(self, mirror=True, size=None):
         """Capture video from camera"""

@@ -8,7 +8,6 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import Reducer from './Reducer'
 const store = createStore(Reducer)
-//<App>を<Provider store={store}>で囲んでください
 
 ReactDOM.render(
   <Provider store={store}>
