@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Graph from '../component/graph'
+
 function Plant_graph() {
     return (
         <div>
-            <h1>test</h1>
+            <Graph/>
         </div>
     )
 }
