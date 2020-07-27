@@ -9,6 +9,7 @@ export default class Links extends React.Component {
         return (
             <div>
                 <Link to="/">Home</Link>
+                <Link to="/test">テストページ</Link>
                 <Link to="/Plant_observation">植物観察</Link>
                 <Link to="/Plant_graph">植物情報</Link>
             </div>

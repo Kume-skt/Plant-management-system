@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Link from './component/Link'
 import Plant_observation from './page/plant_observation'
 import Plant_graph from './page/plant_graph'
-
+import Testpage from './page/test'
 function App() {
 
   return (
@@ -14,6 +14,7 @@ function App() {
         <div>
           <Link />
           <Route exact path='/' component={()=>{return <h1>start</h1>}} />
+          <Route path='/test' component={Testpage} />
           <Route path='/Plant_observation' component={Plant_observation} />
           <Route path='/Plant_graph' component={Plant_graph} />
         </div>

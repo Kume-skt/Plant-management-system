@@ -10,3 +10,9 @@ export const webCamera = (webCameraURL: String) => {
         Data: webCameraURL
     };
 };
+export const Plant_Data = (PlantData: any) => {
+    return {
+        type: 'plantData',
+        Data: PlantData
+    };
+};

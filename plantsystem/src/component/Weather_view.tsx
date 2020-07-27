@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch, connect } from 'react-redux'
 //処理に関するimportをしてください(Action:dispatchです)
-import getData from '../Reducer/fetch'
+import getData from '../API/fetch'
 import './weather.css'
 
 class Weather_view extends React.Component<any, any> {
