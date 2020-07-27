@@ -5,7 +5,6 @@ import {
 } from 'recharts';
 
 import ColorC from "./Data_processing/ColorChange"
-import e from 'express';
 
 interface get_data {
     plant_Data: any,

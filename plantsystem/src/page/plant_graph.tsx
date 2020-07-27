@@ -1,10 +1,11 @@
 import React from 'react'
-import Graph from '../component/graph'
+
 import { useSelector, useDispatch, connect } from 'react-redux'
 //処理に関するimportをしてください(Action:dispatchです)
 import getData from '../API/fetch'
 
-
+import Graph from '../component/graph'
+import Table　from '../component/dataTable'
 class classname extends React.Component<any, any> {
 
     constructor(props: any) {
@@ -34,6 +35,7 @@ class classname extends React.Component<any, any> {
                     left_unit="cm"
                     right_unit="℃"
                 />
+                <Table/>
             </div>)
     }
 }

@@ -1,33 +1,31 @@
-import React from 'react';
-import { useSelector, useDispatch, connect } from 'react-redux'
-//処理に関するimportをしてください(Action:dispatchです)
-import getData from '../API/fetch'
-
-class Test extends React.Component<any, any> {
-
+import React, { PureComponent } from 'react';
+import { Grid } from 'gridjs-react';
+import "./css/test.css"
+export default class Test extends React.Component {
+   data: { Name: string; Email: string; }[];
    constructor(props: any) {
       super(props);
       this.state = {};
+      this.data = [
+      ]
 
    }
-   componentWillMount() {
-      this.props.dispatch1();
-   }
+
    render() {
-      console.log("test");
-      const plant_Data = Object.values(this.props.plantD).map((d: any) => { return d })
-
       return (
-         <p>redux_classType</p>
+         <Grid
+            data={[
+               ['John', 'john@example.com'],
+               ['Mike', 'mike@gmail.com']
+            ]}
+            columns={['Name', 'Email']}
+            search={true}
+            pagination={{
+               enabled: true,
+               limit: 30,
+            }}
+         />
       )
    }
+
 }
-function mapStateToProps(state: any) {
-   return state;
-}
-function mapDispatchToProps() {
-   // eslint-disable-next-line react-hooks/rules-of-hooks
-   const dispatch = useDispatch();
-   return { dispatch1: () => { getData().get_PlantData(dispatch); } };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Test)
