@@ -3,12 +3,13 @@ import { Grid } from 'gridjs-react';
 import "./css/test.css"
 export default class Test extends React.Component {
    data: { Name: string; Email: string; }[];
+   grid: Grid;
    constructor(props: any) {
       super(props);
       this.state = {};
       this.data = [
       ]
-
+  
    }
 
    render() {

@@ -5,7 +5,7 @@ import { useSelector, useDispatch, connect } from 'react-redux'
 import getData from '../API/fetch'
 
 import Graph from '../component/graph'
-import Table　from '../component/dataTable'
+import Table from '../component/dataTable'
 class classname extends React.Component<any, any> {
 
     constructor(props: any) {
@@ -29,13 +29,16 @@ class classname extends React.Component<any, any> {
                 />
                 <Graph plant_Data={this.props.plantD}
                     leftGraph_DataName={["water"]}
-                    rightGraph_DataName={["Temperature","HeatIndex"]}
+                    rightGraph_DataName={["Temperature", "HeatIndex"]}
                     left_Scale={[0, 2, 4, 6, 8, 10]}
-                    right_Scale={[0, 10, 20, 30,40]}
+                    right_Scale={[0, 10, 20, 30, 40]}
                     left_unit="cm"
                     right_unit="℃"
                 />
-                <Table/>
+                <Table
+                    plant_Data={this.props.plantD}
+                    // plant_tableNameList={Object.keys(this.props.plantD[1])}
+                />
             </div>)
     }
 }
