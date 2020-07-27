@@ -4,6 +4,7 @@ import { useSelector, useDispatch, connect } from 'react-redux'
 //処理に関するimportをしてください(Action:dispatchです)
 import getData from '../API/fetch'
 
+
 class classname extends React.Component<any, any> {
 
     constructor(props: any) {
@@ -15,7 +16,7 @@ class classname extends React.Component<any, any> {
     }
     render() {
         return (
-            <Graph/>
+            <Graph plant_Data={this.props.plantD} leftGraph_DataName={[]} rightGraph_DataName={[]} />
         )
     }
 }
