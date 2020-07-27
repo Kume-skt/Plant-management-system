@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 
 import { Grid } from 'gridjs-react';
-import { Plant_Data } from '../Action';
+import "../page/css/gridjs.css"
+
 interface get_data {
     plant_Data: any
     // plant_tableNameList: string[]

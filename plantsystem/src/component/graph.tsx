@@ -37,7 +37,7 @@ export default class Graph extends React.Component<get_data, any>  {
     componentDidUpdate() {
         console.log("yobaareta");
         console.log(this.state);
-        this.graph_DataName_List = this.state.leftGraph_DataName.concat(this.state.rightGraph_DataName)
+        this.graph_DataName_List = this.props.leftGraph_DataName.concat(this.props.rightGraph_DataName)
 
         this.graph_DataName_List.map((dataName: string) => (
             this.color.push(ColorC().hslToHex(360 * (this.graph_DataName_List.lastIndexOf(dataName) + 1) / this.graph_DataName_List.length
@@ -51,10 +51,7 @@ export default class Graph extends React.Component<get_data, any>  {
     //         console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     // }
     render() {
-        console.log("確認");
-        
         if (this.graph_DataName_List.length==0 ) {
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             return (<p>お待ち</p>)
         } else{
         
@@ -64,7 +61,7 @@ export default class Graph extends React.Component<get_data, any>  {
                 <LineChart
                     width={window.innerWidth * 0.7}
                     height={300}
-                    data={this.state.plant_Data}
+                    data={this.props.plant_Data}
                     margin={{
                         top: 5,
                         right: window.innerWidth * 0.11,
@@ -82,21 +79,21 @@ export default class Graph extends React.Component<get_data, any>  {
                         orientation="left"
                         yAxisId="leftYAxis"
                         domain={['dataMin', 'dataMax']}
-                        ticks={this.state.left_Scale} // Y軸に表示する温度
-                        unit={this.state.left_unit} // Y軸の単位
+                        ticks={this.props.left_Scale} // Y軸に表示する温度
+                        unit={this.props.left_unit} // Y軸の単位
                     />
                     <YAxis
                         orientation="right"
                         yAxisId="rightYAxis"
                         domain={['dataMin', 'dataMax']}
-                        ticks={this.state.right_Scale} // Y軸に表示する温度
-                        unit={this.state.right_unit} // Y軸の単位
+                        ticks={this.props.right_Scale} // Y軸に表示する温度
+                        unit={this.props.right_unit} // Y軸の単位
                     />
                     <Tooltip />
                     <Legend />
                     {
                         
-                        this.state.leftGraph_DataName.map((dataName: string) => {
+                        this.props.leftGraph_DataName.map((dataName: string) => {
                         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                         return (<Line
                         type="monotone"
@@ -106,7 +103,7 @@ export default class Graph extends React.Component<get_data, any>  {
                         )
                     })
                     }
-                    {this.state.rightGraph_DataName.map((dataName: string) => {
+                    {this.props.rightGraph_DataName.map((dataName: string) => {
                             return (
                                 <Line
                                     type="monotone"

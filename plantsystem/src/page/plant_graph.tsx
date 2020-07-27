@@ -6,6 +6,8 @@ import getData from '../API/fetch'
 
 import Graph from '../component/graph'
 import Table from '../component/dataTable'
+
+import Test from '../component/Data_processing/plant_HD'
 class classname extends React.Component<any, any> {
 
     constructor(props: any) {
@@ -17,8 +19,20 @@ class classname extends React.Component<any, any> {
     }
 
     render() {
+        Object.values(this.props.plantD).map((Data:any) =>
+            console.log(Test().VH({RH:75,t:Data["Temperature"]}))
+        )
+
         return (
             <div>
+                <Graph plant_Data={this.props.plantD}
+                    leftGraph_DataName={["soil_value", "humidity"]}
+                    rightGraph_DataName={[]}
+                    left_Scale={[0, 20, 40, 60, 80, 100]}
+                    right_Scale={[]}
+                    left_unit="%"
+                    right_unit=""
+                />
                 <Graph plant_Data={this.props.plantD}
                     leftGraph_DataName={["soil_value", "humidity"]}
                     rightGraph_DataName={[]}
@@ -37,7 +51,7 @@ class classname extends React.Component<any, any> {
                 />
                 <Table
                     plant_Data={this.props.plantD}
-                    // plant_tableNameList={Object.keys(this.props.plantD[1])}
+                // plant_tableNameList={Object.keys(this.props.plantD[1])}
                 />
             </div>)
     }
