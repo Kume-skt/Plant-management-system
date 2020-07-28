@@ -10,10 +10,11 @@ interface get_data {
     plant_Data: any,
     leftGraph_DataName: string[],
     rightGraph_DataName: string[],
-    left_Scale:number[],
-    right_Scale:number[],
-    left_unit:string,
-    right_unit:string,
+    left_Scale: number[],
+    right_Scale: number[],
+    left_unit: string,
+    right_unit: string,
+    width: number,
 }
 
 export default class Graph extends React.Component<get_data, any>  {
@@ -22,9 +23,10 @@ export default class Graph extends React.Component<get_data, any>  {
     constructor(props: any) {
         super(props);
         this.state = {};
-    
+
         this.color = []
         this.graph_DataName_List = []
+
     }
     // データを親から取得
     componentWillReceiveProps(nextpro: any) {
@@ -51,59 +53,58 @@ export default class Graph extends React.Component<get_data, any>  {
     //         console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     // }
     render() {
-        if (this.graph_DataName_List.length==0 ) {
+        if (this.graph_DataName_List.length == 0) {
             return (<p>お待ち</p>)
-        } else{
-        
-        return (
-            // <p>test</p>
-            <div className="graph">
-                <LineChart
-                    width={window.innerWidth * 0.7}
-                    height={300}
-                    data={this.props.plant_Data}
-                    margin={{
-                        top: 5,
-                        right: window.innerWidth * 0.11,
-                        left: 0,
-                        bottom: 15
-                    }
+        } else {
 
-                    }
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                        dataKey="DATE"
-                    />
-                    <YAxis
-                        orientation="left"
-                        yAxisId="leftYAxis"
-                        domain={['dataMin', 'dataMax']}
-                        ticks={this.props.left_Scale} // Y軸に表示する温度
-                        unit={this.props.left_unit} // Y軸の単位
-                    />
-                    <YAxis
-                        orientation="right"
-                        yAxisId="rightYAxis"
-                        domain={['dataMin', 'dataMax']}
-                        ticks={this.props.right_Scale} // Y軸に表示する温度
-                        unit={this.props.right_unit} // Y軸の単位
-                    />
-                    <Tooltip />
-                    <Legend />
-                    {
-                        
-                        this.props.leftGraph_DataName.map((dataName: string) => {
-                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                        return (<Line
-                        type="monotone"
-                        dataKey={dataName}
-                        stroke={this.color[this.graph_DataName_List.lastIndexOf(dataName)]}
-                        yAxisId='leftYAxis' />
-                        )
-                    })
-                    }
-                    {this.props.rightGraph_DataName.map((dataName: string) => {
+            return (
+                <div className="graph">
+                    <LineChart
+                        width={this.props.width}
+                        height={300}
+                        data={this.props.plant_Data}
+                        margin={{
+                            top: 5,
+                            right: 50,
+                            left: 0,
+                            bottom: 15
+                        }
+
+                        }
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis
+                            dataKey="DATE"
+                        />
+                        <YAxis
+                            orientation="left"
+                            yAxisId="leftYAxis"
+                            domain={['dataMin', 'dataMax']}
+                            ticks={this.props.left_Scale} // Y軸に表示する温度
+                            unit={this.props.left_unit} // Y軸の単位
+                        />
+                        <YAxis
+                            orientation="right"
+                            yAxisId="rightYAxis"
+                            domain={['dataMin', 'dataMax']}
+                            ticks={this.props.right_Scale} // Y軸に表示する温度
+                            unit={this.props.right_unit} // Y軸の単位
+                        />
+                        <Tooltip />
+                        <Legend />
+                        {
+
+                            this.props.leftGraph_DataName.map((dataName: string) => {
+                                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                                return (<Line
+                                    type="monotone"
+                                    dataKey={dataName}
+                                    stroke={this.color[this.graph_DataName_List.lastIndexOf(dataName)]}
+                                    yAxisId='leftYAxis' />
+                                )
+                            })
+                        }
+                        {this.props.rightGraph_DataName.map((dataName: string) => {
                             return (
                                 <Line
                                     type="monotone"
@@ -113,8 +114,8 @@ export default class Graph extends React.Component<get_data, any>  {
 
                             )
                         })}
-                </LineChart>
-            </div>
+                    </LineChart>
+                </div>
             )
         }
     }

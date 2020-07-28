@@ -25,6 +25,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var mysql = __importStar(require("mysql"));
+var mqtt = __importStar(require("mqtt"));
+var client = mqtt.connect('mqtt://192.168.1.4');
+var mqttsub_Data = {};
 var app = express_1.default();
 var port = 5000;
 var ip = "localhost";
@@ -39,6 +42,9 @@ var connection = mysql.createConnection({
     database: dataBase,
     timezone: 'jst',
 });
+client.on('connect', function () {
+    client.subscribe('kumeta/kumeta/#');
+});
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -50,6 +56,7 @@ app.use(body_parser_1.default.urlencoded({
 app.use(body_parser_1.default.json());
 ////ここから下が本文
 app.get('/', function (req, res) { return res.send('Hello World!'); });
+app.get('/plant_mqtt', function (req, res) { return res.send(mqttsub_Data); });
 // app.get('/plant_getData', (req, res) => res.send(connecter.get_Data('lab')));
 app.get('/plant_getData', function (req, res) {
     connection.query("select * from lab", function (error, results, fields) {
@@ -60,6 +67,10 @@ app.get('/plant_getData', function (req, res) {
         console.log("応答します");
         res.send(results);
     });
+});
+client.on('message', function (topic, message) {
+    var mdata = JSON.parse(message.toString());
+    Object.keys(mdata).map(function (data) { return mqttsub_Data[data] = mdata[data]; });
 });
 // Arudinoのマップ関数
 function valueformat(value, in_min, in_max, out_min, out_max) {

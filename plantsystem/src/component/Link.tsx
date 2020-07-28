@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+
+import '../page/css/base.css'
 export default class Links extends React.Component {
     constructor(props: any) {
         super(props);
@@ -7,11 +9,14 @@ export default class Links extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Link to="/">Home</Link>
-                <Link to="/test">テストページ</Link>
-                <Link to="/Plant_observation">植物観察</Link>
-                <Link to="/Plant_graph">植物情報</Link>
+            <div id ="nav">
+                <ul>
+                    <Link to="/"><li>Home</li></Link>
+                    <Link to="/test"><li>テストページ</li></Link>
+                    <Link to="/Plant_observation"><li>植物観察</li></Link>
+                    <Link to="/Plant_graph"><li>植物情報</li></Link>
+                </ul>
+
             </div>
         )
     }

@@ -16,3 +16,9 @@ export const Plant_Data = (PlantData: any) => {
         Data: PlantData
     };
 };
+export const Plant_Mqtt = (PlantMqtt: any) => {
+    return {
+        type: 'plantMqtt',
+        Data: PlantMqtt
+    };
+};

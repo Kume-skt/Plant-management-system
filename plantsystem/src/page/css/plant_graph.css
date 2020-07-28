@@ -1,0 +1,22 @@
+.plant{
+    /* display: inline-block; */
+    width: 100%;
+    /* margin-left: 1cm;
+    margin-right: 1cm; */
+    text-align: center;
+    background-color: white;
+
+}
+.plant_graph{
+    margin-left:10%;
+    margin-right:10%;
+    text-align: left;
+}
+.graph{
+    display: inline-block;
+}
+
+.plant_table{
+    margin-left:10%;
+    margin-right:10%;
+}

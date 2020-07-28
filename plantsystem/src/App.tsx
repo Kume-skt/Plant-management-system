@@ -6,12 +6,13 @@ import Link from './component/Link'
 import Plant_observation from './page/plant_observation'
 import Plant_graph from './page/plant_graph'
 import Testpage from './page/test'
+
 function App() {
 
   return (
     <div className="App">
       <Router>
-        <div>
+        <div className="home">
           <Link />
           <Route exact path='/' component={()=>{return <h1>start</h1>}} />
           <Route path='/test' component={Testpage} />

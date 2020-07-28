@@ -7,7 +7,11 @@ import getData from '../API/fetch'
 import Graph from '../component/graph'
 import Table from '../component/dataTable'
 
-import Test from '../component/Data_processing/plant_HD'
+import Plant_HD from '../component/Data_processing/plant_HD'
+
+// import '../page/css/base.css'
+import '../page/css/plant_graph.css'
+
 class classname extends React.Component<any, any> {
 
     constructor(props: any) {
@@ -19,40 +23,49 @@ class classname extends React.Component<any, any> {
     }
 
     render() {
-        Object.values(this.props.plantD).map((Data:any) =>
-            console.log(Test().VH({RH:75,t:Data["Temperature"]}))
+        Object.values(this.props.plantD).map((Data: any) =>
+            console.log(Plant_HD().VH({ DATE: Data["DATE"], RH: 75, t: Data["Temperature"] }))
         )
+        const aaaa = Object.values(this.props.plantD).map((Data: any) => { return Plant_HD().HDTA({ DATE: Data["DATE"], RH: 75, t: Data["Temperature"] }) })
+        console.log(aaaa);
 
         return (
-            <div>
-                <Graph plant_Data={this.props.plantD}
-                    leftGraph_DataName={["soil_value", "humidity"]}
-                    rightGraph_DataName={[]}
-                    left_Scale={[0, 20, 40, 60, 80, 100]}
-                    right_Scale={[]}
-                    left_unit="%"
-                    right_unit=""
-                />
-                <Graph plant_Data={this.props.plantD}
-                    leftGraph_DataName={["soil_value", "humidity"]}
-                    rightGraph_DataName={[]}
-                    left_Scale={[0, 20, 40, 60, 80, 100]}
-                    right_Scale={[]}
-                    left_unit="%"
-                    right_unit=""
-                />
-                <Graph plant_Data={this.props.plantD}
-                    leftGraph_DataName={["water"]}
-                    rightGraph_DataName={["Temperature", "HeatIndex"]}
-                    left_Scale={[0, 2, 4, 6, 8, 10]}
-                    right_Scale={[0, 10, 20, 30, 40]}
-                    left_unit="cm"
-                    right_unit="℃"
-                />
-                <Table
-                    plant_Data={this.props.plantD}
-                // plant_tableNameList={Object.keys(this.props.plantD[1])}
-                />
+            <div className="plant">
+                <div className="plant_graph">
+                    <Graph plant_Data={this.props.plantD}
+                        leftGraph_DataName={["soil_value", "humidity"]}
+                        rightGraph_DataName={[]}
+                        left_Scale={[0, 20, 40, 60, 80, 100]}
+                        right_Scale={[]}
+                        left_unit="%"
+                        right_unit=""
+                        width={1010}
+                    />
+                    <Graph plant_Data={aaaa}
+                        leftGraph_DataName={["max_hd", "min_hd", "real_hd"]}
+                        rightGraph_DataName={[]}
+                        left_Scale={[0, 5, 10, 15, 20]}
+                        right_Scale={[]}
+                        left_unit="g/m3"
+                        right_unit=""
+                        width={500}
+                    />
+                    <Graph plant_Data={this.props.plantD}
+                        leftGraph_DataName={["water"]}
+                        rightGraph_DataName={["Temperature", "HeatIndex"]}
+                        left_Scale={[0, 2, 4, 6, 8, 10]}
+                        right_Scale={[0, 10, 20, 30, 40]}
+                        left_unit="cm"
+                        right_unit="℃"
+                        width={500}
+                    />
+                </div>
+                <div className="plant_table">
+                    <Table
+                        plant_Data={this.props.plantD}
+                    // plant_tableNameList={Object.keys(this.props.plantD[1])}
+                    />
+                </div>
             </div>)
     }
 }
