@@ -23,11 +23,8 @@ class classname extends React.Component<any, any> {
     }
 
     render() {
-        Object.values(this.props.plantD).map((Data: any) =>
-            console.log(Plant_HD().VH({ DATE: Data["DATE"], RH: 75, t: Data["Temperature"] }))
-        )
-        const aaaa = Object.values(this.props.plantD).map((Data: any) => { return Plant_HD().HDTA({ DATE: Data["DATE"], RH: 75, t: Data["Temperature"] }) })
-        console.log(aaaa);
+        const plant_hd = Object.values(this.props.plantD).map((Data: any) => { return Plant_HD().HDTA({ DATE: Data["DATE"], RH: Data["humidity"], t: Data["Temperature"] }) })
+        console.log(plant_hd);
 
         return (
             <div className="plant">
@@ -41,7 +38,7 @@ class classname extends React.Component<any, any> {
                         right_unit=""
                         width={1010}
                     />
-                    <Graph plant_Data={aaaa}
+                    <Graph plant_Data={plant_hd}
                         leftGraph_DataName={["max_hd", "min_hd", "real_hd"]}
                         rightGraph_DataName={[]}
                         left_Scale={[0, 5, 10, 15, 20]}

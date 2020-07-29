@@ -9,8 +9,10 @@ const plant_hd = () => {
     // 飽差 
     function hd(params: plant_data) {
         console.log(params);
+        console.log(vh(params));
 
-        return (100 - params.RH) * at(params) / 100
+        // return (100 - params.RH) * at(params) / 100
+        return at(params) - vh(params)
     }
     // 絶対湿度
     function vh(params: plant_data) {
@@ -26,7 +28,7 @@ const plant_hd = () => {
     }
     // 飽和水蒸気圧
     function et(params: plant_data) {
-        return 6.11 * Math.pow(10, ((7.5 * params.t) / (params.t + 237.3)));
+        return 6.1 * Math.pow(10, ((7.5 * params.t) / (params.t + 237.3)));
     }
 
     function HD_table(params: plant_data) {
