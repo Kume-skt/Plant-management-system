@@ -14,7 +14,7 @@ function App() {
       <Router>
         <div className="home">
           <Link />
-          <Route exact path='/' component={()=>{return <h1>start</h1>}} />
+          <Route exact path='/' component={()=>{return <h1>plant management</h1>}} />
           <Route path='/test' component={Testpage} />
           <Route path='/Plant_observation' component={Plant_observation} />
           <Route path='/Plant_graph' component={Plant_graph} />

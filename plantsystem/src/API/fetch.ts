@@ -1,23 +1,24 @@
 import { webCamera, Weather,Plant_Data, Plant_Mqtt } from '../Action'
 const reData = () => {
+    const ip_Address:string="http://192.168.2.14:5000"
     function get_webCamera(dispatch: any) {
-        fetch("http://localhost:5000")
+        fetch(ip_Address)
             .then(data => dispatch(webCamera(data.url)))
     }
     function get_Weather(dispatch: any) {
-        fetch("http://localhost:5000/Weather")
+        fetch(`${ip_Address}/Weather`)
             .then(data => data.json())
             .then(data => dispatch(Weather(data))
         )
     }
     function get_PlantData(dispatch: any) {
-        fetch("http://localhost:5000/plant_getData")
+        fetch(`${ip_Address}/plant_getData`)
             .then(data => data.json())
             .then(data => dispatch(Plant_Data(data))
             )
     }
     function get_PlantMqtt(dispatch: any) {
-        fetch("http://localhost:5000/plant_Mqtt")
+        fetch(`${ip_Address}/plant_Mqtt`)
             .then(data => data.json())
             .then(data => dispatch(Plant_Mqtt(data))
         )

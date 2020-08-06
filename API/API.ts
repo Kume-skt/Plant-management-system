@@ -10,7 +10,7 @@ const port: number = 5000;
 
 const ip = "localhost"
 const userName = "kumeta"
-const passWord = 'password'
+const passWord = 'Pass!1108b'
 const dataBase = "plant"
 
 // const connecter = new DataBase(ip, userName, passWord, dataBase)

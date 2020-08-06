@@ -12,8 +12,8 @@ export default class Links extends React.Component {
             <div id ="nav">
                 <ul>
                     <Link to="/"><li>Home</li></Link>
-                    <Link to="/test"><li>テストページ</li></Link>
-                    <Link to="/Plant_observation"><li>植物観察</li></Link>
+                    {/* <Link to="/test"><li>テストページ</li></Link> */}
+                    {/* <Link to="/Plant_observation"><li>植物観察</li></Link> */}
                     <Link to="/Plant_graph"><li>植物情報</li></Link>
                 </ul>
 
