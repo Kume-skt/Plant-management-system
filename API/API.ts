@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import * as mysql from 'mysql'
 import * as mqtt from 'mqtt'
 
+
 const client = mqtt.connect('mqtt://192.168.1.4')
 let mqttsub_Data: { [key: string]: any } = {}
 const app: express.Express = express();

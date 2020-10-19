@@ -8,7 +8,7 @@ body{
     color: black;
 }
 .home h1{
-    font-size: 10em;
+    font-size: 3em;
 }
 .App{
     background-color: white;
@@ -29,12 +29,12 @@ body{
    
 #nav Link li {
     text-decoration: none;
-    color: rgb(255, 0, 0);
+    color: rgb(141, 253, 141);
     font-weight: bold;
 }
 #nav li {
     transition: 1.0s ;
-    width: 140px;
+    margin-right: 1.4em;
     list-style: none;
     text-align: center;
     
@@ -43,7 +43,7 @@ body{
     text-decoration: none;
 }
 #nav li:hover{
-    height: 25px;
+    height: 1em;
     background-color: rgb(191, 255, 218);
     color: rgb(0, 0, 0);
     text-decoration: none;
