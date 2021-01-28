@@ -2,9 +2,11 @@ import React from "react";
 import { useSelector, useDispatch, connect } from "react-redux";
 //処理に関するimportをしてください(Action:dispatchです)
 import getData from "../API/fetch";
-import { setInterval } from "timers";
 import plant_img from "./img/plant.jpg";
 import { css } from "emotion";
+
+// testPage
+
 class plantMqtt extends React.Component<any, any> {
   test_css: string;
   testimg_css: string;

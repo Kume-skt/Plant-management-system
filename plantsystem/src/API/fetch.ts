@@ -1,6 +1,7 @@
+import { config } from './config';
 import { webCamera, Weather,Plant_Data, Plant_Mqtt } from '../Action'
 const reData = () => {
-    const ip_Address:string="http://192.168.2.14:5000"
+    const ip_Address:string=config.apiIp
     function get_webCamera(dispatch: any) {
         fetch(ip_Address)
             .then(data => dispatch(webCamera(data.url)))
