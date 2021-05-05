@@ -2,40 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { css } from "emotion";
 import '../page/css/base.css';
-export default class Links extends React.Component {
-  // nav_css: string;
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-    // this.nav_css = css({
-    //   textDecoration: "none",
-    //   color: "rgb(0, 0, 0)",
-    //   fontWeight: "bold",
-    //   listStyle: "none",
-    //   "@media (max-width: 1000px)": {
-    //     display: "inline",
-    //     backgroundColor: "red",
-    //   },
-    // });
-  }
-  render() {
-    return (
-      <div id='nav'>
-        <ul>
-          <Link to='/'>
-            <li>Home</li>
-          </Link>
-          <Link to='/test'>
-            <li>植物一覧</li>
-          </Link>
-          <Link to='/Plant_observation'>
-            <li>植物観察</li>
-          </Link>
-          <Link to='/Plant_graph'>
-            <li>植物情報</li>
-          </Link>
-        </ul>
-      </div>
-    );
-  }
+import { Typography } from '@material-ui/core';
+import styled from 'styled-components';
+export default function Links() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        height: 60,
+        backgroundColor: '#42DB8C',
+        alignItems: 'center',
+      }}
+    >
+      <Linklist to='/'>
+        <Typography variant='h5'>Home</Typography>
+      </Linklist>
+      <Linklist to='/Plant_observation'>
+        <Typography variant='h5'>植物観察</Typography>
+      </Linklist>
+      <Linklist to='/Plant_graph'>
+        <Typography variant='h5'>植物情報</Typography>
+      </Linklist>
+    </div>
+  );
 }
+const Linklist = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin: 0 15px;
+`;

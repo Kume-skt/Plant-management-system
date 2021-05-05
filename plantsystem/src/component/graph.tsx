@@ -57,12 +57,7 @@ export default class Graph extends React.Component<get_data, any> {
       )
     );
   }
-  // componentDidMount() {
-  //     setInterval(this.tets,1000);
-  // }
-  // tets() {
-  //         console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-  // }
+
   render() {
     if (this.graph_DataName_List.length == 0) {
       return <p>お待ち</p>;
@@ -99,7 +94,6 @@ export default class Graph extends React.Component<get_data, any> {
             <Tooltip />
             <Legend />
             {this.props.leftGraph_DataName.map((dataName: string) => {
-              // eslint-disable-next-line @typescript-eslint/no-unused-expressions
               return (
                 <Line
                   type='monotone'
