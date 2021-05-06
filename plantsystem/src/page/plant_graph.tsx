@@ -28,7 +28,6 @@ class classname extends React.Component<any, any> {
         t: Data['Temperature'],
       });
     });
-    console.log(plant_hd);
 
     return (
       <div className='plant'>

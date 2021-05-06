@@ -1,3 +1,4 @@
+import { stringify } from 'querystring';
 import React from 'react';
 
 import {
@@ -39,87 +40,79 @@ export default class Graph extends React.Component<get_data, any> {
       this.setState({ ...this.state, [data]: nextpro[data] });
     });
   }
-  componentDidUpdate() {
-    console.log('yobaareta');
-    console.log(this.state);
-    this.graph_DataName_List = this.props.leftGraph_DataName.concat(
-      this.props.rightGraph_DataName
-    );
 
-    this.graph_DataName_List.map((dataName: string) =>
+  render() {
+    this.props.leftGraph_DataName.map((dataName: string, index: number) =>
       this.color.push(
         ColorC().hslToHex(
-          (360 * (this.graph_DataName_List.lastIndexOf(dataName) + 1)) /
-            this.graph_DataName_List.length,
+          (360 * (index + 1)) / this.props.leftGraph_DataName.length,
           100,
           35
         )
       )
     );
-  }
 
-  render() {
-    if (this.graph_DataName_List.length == 0) {
-      return <p>お待ち</p>;
-    } else {
-      return (
-        <div className='graph'>
-          <LineChart
-            width={this.props.width}
-            height={300}
-            data={this.props.plant_Data}
-            margin={{
-              top: 5,
-              right: 50,
-              left: 0,
-              bottom: 15,
-            }}
-          >
-            <CartesianGrid strokeDasharray='3 3' />
-            <XAxis dataKey='DATE' />
-            <YAxis
-              orientation='left'
-              yAxisId='leftYAxis'
-              domain={['dataMin', 'dataMax']}
-              ticks={this.props.left_Scale} // Y軸に表示する温度
-              unit={this.props.left_unit} // Y軸の単位
-            />
-            <YAxis
-              orientation='right'
-              yAxisId='rightYAxis'
-              domain={['dataMin', 'dataMax']}
-              ticks={this.props.right_Scale} // Y軸に表示する温度
-              unit={this.props.right_unit} // Y軸の単位
-            />
-            <Tooltip />
-            <Legend />
-            {this.props.leftGraph_DataName.map((dataName: string) => {
-              return (
-                <Line
-                  type='monotone'
-                  dataKey={dataName}
-                  stroke={
-                    this.color[this.graph_DataName_List.lastIndexOf(dataName)]
-                  }
-                  yAxisId='leftYAxis'
-                />
-              );
-            })}
-            {this.props.rightGraph_DataName.map((dataName: string) => {
-              return (
-                <Line
-                  type='monotone'
-                  dataKey={dataName}
-                  stroke={
-                    this.color[this.graph_DataName_List.lastIndexOf(dataName)]
-                  }
-                  yAxisId='rightYAxis'
-                />
-              );
-            })}
-          </LineChart>
-        </div>
-      );
-    }
+    return (
+      <div className='graph'>
+        <LineChart
+          width={this.props.width}
+          height={300}
+          data={this.props.plant_Data}
+          margin={{
+            top: 5,
+            right: 50,
+            left: 0,
+            bottom: 15,
+          }}
+        >
+          <CartesianGrid strokeDasharray='3 3' />
+          <XAxis dataKey='DATE' />
+          <YAxis
+            orientation='left'
+            yAxisId='leftYAxis'
+            domain={['dataMin', 'dataMax']}
+            ticks={this.props.left_Scale} // Y軸に表示する温度
+            unit={this.props.left_unit} // Y軸の単位
+          />
+          <YAxis
+            orientation='right'
+            yAxisId='rightYAxis'
+            domain={['dataMin', 'dataMax']}
+            ticks={this.props.right_Scale} // Y軸に表示する温度
+            unit={this.props.right_unit} // Y軸の単位
+          />
+          <Tooltip />
+          <Legend />
+          {this.props.leftGraph_DataName.map((dataName: string) => {
+            return (
+              <Line
+                type='monotone'
+                dataKey={dataName}
+                stroke={
+                  this.color[
+                    this.props.leftGraph_DataName.lastIndexOf(dataName)
+                  ]
+                }
+                yAxisId='leftYAxis'
+              />
+            );
+          })}
+          {this.props.rightGraph_DataName.map((dataName: string) => {
+            return (
+              <Line
+                type='monotone'
+                dataKey={dataName}
+                stroke={
+                  this.color[
+                    this.props.leftGraph_DataName.lastIndexOf(dataName)
+                  ]
+                }
+                yAxisId='rightYAxis'
+              />
+            );
+          })}
+        </LineChart>
+      </div>
+    );
   }
 }

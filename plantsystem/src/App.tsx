@@ -7,8 +7,6 @@ import Plant_observation from './page/plant_observation';
 import Plant_graph from './page/plant_graph';
 
 function App() {
-  console.log(process.env);
-
   return (
     <div className='App'>
       <Router>
