@@ -1,5 +1,4 @@
 # Plant-management-system
-このプログラムは、react_soilをアップグレードしているものです。<br>
 
 <p>機能としては、<br>
 １．WEBカメラの情報を表示<br>
